@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="Aplicação criada voluntariamente para facilitar pesquisas de endereço de IP no setor de Suporte Técnico."/>
+    <meta name="author" content="Matheus André da Silva" />
+    <title>Acesso por Endereço IP</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Links de acesso por IP</h1>
+      <p class="sub">Informe um IP</p>
+
+      <div class="row">
+        <input
+          id="ip"
+          type="text"
+          inputmode="decimal"
+          placeholder=""
+          aria-label="Endereço IP"
+          autocomplete="off"
+        />
+        <button class="go" id="gerar">Gerar links</button>
+      </div>
+      <p id="erro" role="alert"></p>
+
+      <section id="resultado" hidden>
+        <h2>Abrir no navegador</h2>
+        <div class="grid" id="web"></div>
+        <h2>Copiar comando</h2>
+        <div id="cmds"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,203 @@
+/* Cores do tema claro, definidas como variáveis para reaproveitar no arquivo todo */
+:root {
+  --bg: #f3f5f7;        /* fundo da página */
+  --card: #ffffff;      /* fundo de campos e cartões */
+  --ink: #1b2430;       /* cor do texto */
+  --muted: #5d6b7a;     /* texto secundário */
+  --line: #d5dbe1;      /* bordas */
+  --accent: #0b6e69;    /* cor de destaque (botão principal, foco) */
+  --accent-ink: #ffffff;/* texto sobre a cor de destaque */
+}
+
+/* Tema escuro automático: segue a preferência do sistema do usuário */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12171d;
+    --card: #1b222b;
+    --ink: #e6ebf0;
+    --muted: #93a1b0;
+    --line: #2d3742;
+    --accent: #3cc2b8;
+    --accent-ink: #08201e;
+  }
+}
+
+/* Faz padding e borda entrarem na largura do elemento (evita estouro de layout) */
+* {
+  box-sizing: border-box;
+}
+
+/* Base da página: fundo, cor e fonte do sistema */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font:
+    16px/1.5 system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+}
+
+/* Conteúdo centralizado, com largura máxima de 720px */
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin: 0 0 4px;
+}
+
+/* Texto de apoio abaixo do título */
+p.sub {
+  margin: 0 0 24px;
+  color: var(--muted);
+}
+
+/* Campo e botão lado a lado */
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+/* O input ocupa o espaço restante; min-width: 0 evita que estoure em telas pequenas */
+input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+/* Contorno visível ao navegar pelo teclado (acessibilidade) */
+input:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Botão principal "Gerar links" */
+button.go {
+  padding: 12px 20px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--accent-ink);
+  background: var(--accent);
+  border: 0;
+  border-radius: 8px;
+}
+
+/* Mensagem de erro; min-height reserva o espaço e evita "pulo" no layout */
+#erro {
+  min-height: 1.5em;
+  margin: 8px 0 0;
+  color: #c0392b;
+  font-size: 0.9rem;
+}
+
+h2 {
+  font-size: 1rem;
+  margin: 28px 0 10px;
+}
+
+/* Grade responsiva: colunas de no mínimo 190px, quantas couberem */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 8px;
+}
+
+/* Cartão de link (nome em cima, URL embaixo) */
+a.link {
+  display: block;
+  padding: 10px 12px;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+a.link:hover {
+  border-color: var(--accent);
+}
+
+/* Destaque do Atlas: cartão preto com texto branco */
+a.link.atlas {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+a.link.atlas span {
+  color: #b7b7b7;
+}
+
+a.link.atlas:hover {
+  border-color: var(--accent);
+}
+
+/* Nome do serviço */
+a.link b {
+  display: block;
+  font-size: 0.95rem;
+}
+
+/* URL do serviço; word-break evita que URLs longas estourem o cartão */
+a.link span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  word-break: break-all;
+}
+
+/* Linha de comando: texto à esquerda, botão "Copiar" à direita */
+.cmd {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* Comando em fonte monoespaçada */
+.cmd code {
+  font:
+    0.85rem ui-monospace,
+    Menlo,
+    Consolas,
+    monospace;
+  word-break: break-all;
+}
+
+/* Botão "Copiar": discreto, com apenas borda; flex: none impede que encolha */
+.cmd button {
+  flex: none;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+/* Estilo de nota de rodapé (não é usada no HTML atual) */
+.nota {
+  margin-top: 28px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
